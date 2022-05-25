@@ -1,13 +1,25 @@
-import { Button } from '@chakra-ui/react';
+import { Box, Container, Flex } from '@chakra-ui/react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Layout from './components/Layout/Layout';
+import Login from './containers/Login/Login';
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <h1>hello mcq</h1>
-      <Button>Click Me</Button>
-    </div>
+    <Flex
+      style={{
+        backgroundImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      }}
+      height='100vh'
+      width='full'
+      align='center'
+      justifyContent='center'
+    >
+      <Container maxW='container.xl' borderRadius='md' bg='white' minH='md'>
+        <Layout />
+      </Container>
+    </Flex>
   );
-}
+};
 
 export default App;
