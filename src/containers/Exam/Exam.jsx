@@ -99,7 +99,7 @@ const Exam = () => {
                 key={ans.title}
                 value={ans.title}
               >
-                {ans.title}
+                {`${ans.title} ${ans.isCorrect ? '(Correct)' : '(Incorrect)'}`}
               </ChakraRadio>
             );
           })}

@@ -31,6 +31,6 @@ export const answersPercentageSelector = createSelector(
     );
     console.log(correctAnswers);
 
-    return ((correctAnswers.length / state.questions.length) * 100).toFixed(2); // n of correct answers / all question n * 100 for percentage
+    return Math.round((correctAnswers.length / state.questions.length) * 100); // n of correct answers / all question n * 100 for percentage
   }
 );
