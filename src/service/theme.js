@@ -4,6 +4,7 @@ export const theme = {
       body: {
         minHeight: '100vh',
         overflow: 'hidden',
+        color: 'black',
       },
     },
   },

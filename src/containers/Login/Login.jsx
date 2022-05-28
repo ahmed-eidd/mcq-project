@@ -1,16 +1,23 @@
-import { Button, Spinner } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Form from '../../components/Form/Form';
 import InputField from '../../components/InputField/InputField';
-import { authIsLoading, login, setIsLoading } from '../../store/auth/slice';
+import { authIsLoadingSelector } from '../../store/auth/selectors';
+import { login, setIsLoading } from '../../store/auth/slice';
 
 const Login = () => {
+
+  // Redux
   const dispatch = useDispatch();
-  const isLoading = useSelector(authIsLoading);
+  const isLoading = useSelector(authIsLoadingSelector);
+
+  // local state
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // handlers
   const handleSubmit = () => {
     dispatch(setIsLoading(true));
     console.log(isLoading);
@@ -20,6 +27,9 @@ const Login = () => {
     }, 1000);
     console.log('not loading');
   };
+
+
+  // JSX
   return (
     <Form onSubmit={handleSubmit}>
       <InputField
@@ -51,9 +61,7 @@ const Login = () => {
       />
       <Button
         isLoading={isLoading}
-        // variantColor='teal'
         colorScheme='blue'
-        // variant='outline'
         type='submit'
         width='full'
         mt={4}

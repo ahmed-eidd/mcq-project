@@ -1,37 +1,40 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import Home from '../../containers/Home/Home';
-import Login from '../../containers/Login/Login';
-
-const ProtectedRoute = ({ element: Component, ...rest }) => {
-  const authState = useSelector((state) => state.auth);
-  // const location = useLocation()
-  if (!authState.isUserLoggedIn) {
-    return <Route {...rest} element={<Navigate to='/login' />} />;
-  }
-  return <Component {...rest} />;
-};
+import {
+  Box,
+  Container,
+  Flex,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import AppRoutes from '../../Routes/Routes';
+import Nav from '../Nav/Nav';
 
 const Layout = () => {
-  const authState = useSelector((state) => state.auth);
-  const navigtor = useNavigate();
 
-  useEffect(() => {
-    // if isUserLoggedIn turned to true redirect to /home
-    if (!authState.isUserLoggedIn) {
-      navigtor('/login');
-    } else {
-      navigtor('/home');
-    }
-  }, [authState.isUserLoggedIn, navigtor]); // triggers when isUserLoggedIn changes
+  const backgroundColorMode = useColorModeValue('white', 'gray.800');
 
   return (
-    <Routes>
-      <Route path='/login' element={<Login />} />
-      <Route path='/home' element={<Home />} />
-      {/* <Route path='*' element={() => '404 Not found.'} /> */}
-    </Routes>
+    <Flex
+      style={{
+        backgroundImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      }}
+      height='100vh'
+      width='full'
+      align='center'
+      justifyContent='center'
+    >
+      <Container
+        boxShadow='xl'
+        maxW='xl'
+        borderRadius='md'
+        bg={backgroundColorMode}
+        // minH='md'
+        p={6}
+      >
+        <Box>
+          <Nav />
+          <AppRoutes />
+        </Box>
+      </Container>
+    </Flex>
   );
 };
 
