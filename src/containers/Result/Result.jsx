@@ -6,8 +6,7 @@ import { answersPercentageSelector } from '../../store/questions/selectors';
 import { resetQuestions } from '../../store/questions/slice';
 
 const Result = () => {
-
-  // Redux 
+  // Redux
   const dispatch = useDispatch();
   const percentage = useSelector(answersPercentageSelector);
 
@@ -15,11 +14,13 @@ const Result = () => {
   const navigate = useNavigate();
 
   // handlers
+  /**
+   * When the user clicks the button, the user is navigated to the exam page and the questions are reset.
+   */
   const onClickHandler = () => {
     navigate('/exam');
     dispatch(resetQuestions());
   };
-
 
   //JSX
   return (

@@ -23,6 +23,7 @@ export const userAnswersSelector = createSelector(
   (state) => state.userAnswers
 );
 
+/* A selector that is used to calculate the percentage of correct answers. */
 export const answersPercentageSelector = createSelector(
   questionsState,
   (state) => {

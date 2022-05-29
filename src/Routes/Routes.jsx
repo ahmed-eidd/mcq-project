@@ -9,6 +9,7 @@ import { authIsLoggedInSelector } from '../store/auth/selectors';
 const AppRoutes = () => {
   const isUserLoggedIn = useSelector(authIsLoggedInSelector);
   return (
+    /* A react router. */
     <Routes>
       {/* Login Route */}
 

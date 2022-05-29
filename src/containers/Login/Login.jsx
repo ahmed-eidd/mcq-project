@@ -7,7 +7,6 @@ import { authIsLoadingSelector } from '../../store/auth/selectors';
 import { login, setIsLoading } from '../../store/auth/slice';
 
 const Login = () => {
-
   // Redux
   const dispatch = useDispatch();
   const isLoading = useSelector(authIsLoadingSelector);
@@ -18,6 +17,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   // handlers
+  /**
+   * When the user clicks the submit button, the loading state is set to true, then after 1 second, the
+   * loading state is set to false and the user is logged in.
+   */
   const handleSubmit = () => {
     dispatch(setIsLoading(true));
     console.log(isLoading);
@@ -27,7 +30,6 @@ const Login = () => {
     }, 1000);
     console.log('not loading');
   };
-
 
   // JSX
   return (

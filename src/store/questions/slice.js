@@ -12,6 +12,7 @@ const questionSlice = createSlice({
   name: 'questions',
   initialState,
   reducers: {
+    /* Shuffling the questions and answers. */
     randomizeQuestions(state) {
       state.questions = shuffleArr(state.questions); // shuffle questions
 

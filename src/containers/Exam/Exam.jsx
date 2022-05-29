@@ -37,20 +37,23 @@ const Exam = () => {
   const navigate = useNavigate();
 
   // handlers
+  /**
+   * If the answer exists, modify it, otherwise add a new one.
+   */
   const onAnswerChange = (answer, questionName) => {
-    // onChange handler to keep track of all the answers array of object {title: '...', isCorrect: '...'}
     let answerId = answers.findIndex((ans) => ans.question === answer.question);
     if (answerId !== -1) {
-      // if the answer does exist modify it
       let newAnswers = [...answers];
       newAnswers[answerId] = answer;
       setAnswers(newAnswers);
     } else {
-      // if it does not exist add new one
       setAnswers([...answers, { ...answer, question: questionName }]);
     }
   };
 
+  /**
+   * If the current question is not the last question, then go to the next question.
+   */
   const onNextHandler = () => {
     if (!currentValue) {
       setError(true);
@@ -74,7 +77,10 @@ const Exam = () => {
 
   //JSX
   return (
+    /* A component that is used to wrap other components. It is used to apply styles to the wrapped
+    components. */
     <Box>
+      <Text color='blue.200' as='u'>showing the correct answers for demo purposes</Text>
       <Text my={4}>{currentQuestion + 1 + ' / ' + allQuestions.length}</Text>
       <Heading fontSize='lg'>{allQuestions[currentQuestion].title}</Heading>
       <ChakraRadioGroup
